@@ -4,5 +4,8 @@ MAINTAINER Franklin Dattein <franklin@dattein.com>
 
 LABEL "com.centurylinklabs.watchtower"="true"
 
+WORKDIR /
 COPY watchtower /
+RUN chmod +x watchtower
+
 ENTRYPOINT ["/watchtower"]

@@ -41,7 +41,7 @@ Run the `watchtower` container with the following command:
 docker run -d \
   --name watchtower \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  centurylink/watchtower
+  inventmarine/watchtower
 ```
 
 ### Arguments
@@ -52,7 +52,7 @@ By default, watchtower will monitor all containers running within the Docker dae
 docker run -d \
   --name watchtower \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  centurylink/watchtower nginx redis
+  inventmarine/watchtower mongodb
 ```
 
 In the example above, watchtower will only monitor the containers named "nginx" and "redis" for updates -- all of the other running containers will be ignored.
@@ -142,3 +142,7 @@ docker run -d \
 ## Updating Watchtower
 
 If watchtower is monitoring the same Docker daemon under which the watchtower container itself is running (i.e. if you volume-mounted */var/run/docker.sock* into the watchtower container) then it has the ability to update itself. If a new version of the *centurylink/watchtower* image is pushed to the Docker Hub, your watchtower will pull down the new image and restart itself automatically.
+
+
+## Building  - Cross compilation for ARM and AMD64
+docker run --rm -e BUILD_GOOS="linux" -e BUILD_GOARCH="arm amd64" -v $(pwd):/src centurylink/golang-builder-cross
