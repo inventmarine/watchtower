@@ -1,10 +1,16 @@
 # Watchtower
-![Watchtower](http://panamax.ca.tier3.io/zodiac/logo-watchtower_thumb.png)
+![Watchtower](https://labs.ctl.io/wp-content/uploads/2015/08/project-watchtower-300x180.jpg)
 
 [![Build Status](https://travis-ci.org/getcarina/watchtower.svg?branch=master)](https://travis-ci.org/getcarina/watchtower)&nbsp;
 [![](https://badge.imagelayers.io/centurylink/watchtower:latest.svg)](https://imagelayers.io/?images=centurylink/watchtower:latest 'Get your own badge on imagelayers.io')
 
 A process for watching your Docker containers and automatically restarting them whenever their base image is refreshed.
+
+## Fork Info
+
+This is a fork of getcarina/watchtower (which was originally forked from centurylink/watchtower) modified to run on ARM devices, such as the RaspberryPI.
+
+This fork wasn't started from the original centurylink/watchtower because it was broken and doesn't seem to be maintaned.  
 
 ## Overview
 
@@ -21,7 +27,7 @@ CONTAINER ID   IMAGE                   STATUS          PORTS                    
 6cc4d2a9d1a5   centurylink/watchtower  Up 15 minutes                            watchtower
 ```
 
-Every few mintutes watchtower will pull the latest *centurylink/wetty-cli* image and compare it to the one that was used to run the "wetty" container. If it sees that the image has changed it will stop/remove the "wetty" container and then restart it using the new image and the same `docker run` options that were used to start the container initially (in this case, that would include the `-p 8080:3000` port mapping).
+Every few minutes watchtower will pull the latest *centurylink/wetty-cli* image and compare it to the one that was used to run the "wetty" container. If it sees that the image has changed it will stop/remove the "wetty" container and then restart it using the new image and the same `docker run` options that were used to start the container initially (in this case, that would include the `-p 8080:3000` port mapping).
 
 ## Usage
 
