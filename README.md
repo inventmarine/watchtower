@@ -1,5 +1,5 @@
 # Watchtower
-![Watchtower](http://panamax.ca.tier3.io/zodiac/logo-watchtower_thumb.png)
+![Watchtower](https://labs.ctl.io/wp-content/uploads/2015/08/project-watchtower-300x180.jpg)
 
 [![Build Status](https://travis-ci.org/getcarina/watchtower.svg?branch=master)](https://travis-ci.org/getcarina/watchtower)&nbsp;
 [![](https://badge.imagelayers.io/centurylink/watchtower:latest.svg)](https://imagelayers.io/?images=centurylink/watchtower:latest 'Get your own badge on imagelayers.io')
