@@ -6,7 +6,8 @@ LABEL "com.centurylinklabs.watchtower"="true"
 
 WORKDIR /
 
-COPY bin/watchtower-linux-arm /
-RUN mv watchtower-linux-arm watchtower
+COPY ./bin/watchtower-linux-arm /usr/local/bin/
+RUN mv /usr/local/bin/watchtower-linux-arm /usr/local/bin/watchtower
+RUN chmod +x /usr/local/bin/watchtower
 
-ENTRYPOINT ["/watchtower cleanup=true debug=true i=3"]
+ENTRYPOINT ["/usr/local/bin/watchtower", "cleanup=true", "debug=true", "i=3"]
