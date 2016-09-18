@@ -1,3 +1,17 @@
+node('master') {
+    stage('Checkout') {
+
+        checkout([$class                           : 'GitSCM',
+                  branches                         : [[name: '*/master']],
+                  doGenerateSubmoduleConfigurations: false,
+                  extensions                       : [],
+                  submoduleCfg                     : [],
+                  userRemoteConfigs                : [[credentialsId: 'ae69e313-dd64-4c5b-9bfb-5b3d325fb698',
+                                                       url          : 'https://fsamir@github.com/inventmarine/watchtower.git']]])
+
+    }
+    sh 'docker run --rm -e BUILD_GOOS="linux" -e BUILD_GOARCH="arm" -v $(pwd)/bin:/go/src/github.com/awslabs/amazon-ecr-credential-helper/bin $(docker build -q .)'
+}
 node('arm-slave') {
     stage('Checkout') {
 
