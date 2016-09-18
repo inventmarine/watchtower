@@ -17,15 +17,21 @@ node('arm-slave') {
         dockerImage = docker.build('inventmarine/watchtower:latest')
     }
 
-    //TODO: This is overwritting ~/.docker/config.json and messing with ecr-credentials-help
-    //stage('ECR authenticate') {
-    ////   sh 'rm -f ~/.docker/config.json || true'
-    //     sh 'eval $(aws ecr get-login --region us-east-1)'
-    //}
+    //XXX: `aws ecr get-login` overwrites ~/.docker/config.json
+    stage('ECR authenticate') {
+         sh 'cp ~/.docker/config.json ~/.docker/config.json.bkp || true'
+         sh 'rm -f ~/.docker/config.json || true'
+         sh 'eval $(aws ecr get-login --region us-east-1)'
+    }
 
     stage('Docker push') {
         docker.withRegistry('https://710895077843.dkr.ecr.us-east-1.amazonaws.com/inventmarine/watchtower') {
             dockerImage.push('latest')
         }
     }
+
+    stage('Restorea Docker config') {
+        sh 'cp ~/.docker/config.json.bkp ~/.docker/config.json || true'
+    }
+
 }
