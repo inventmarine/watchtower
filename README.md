@@ -144,5 +144,11 @@ docker run -d \
 If watchtower is monitoring the same Docker daemon under which the watchtower container itself is running (i.e. if you volume-mounted */var/run/docker.sock* into the watchtower container) then it has the ability to update itself. If a new version of the *centurylink/watchtower* image is pushed to the Docker Hub, your watchtower will pull down the new image and restart itself automatically.
 
 
-## Building  - Cross compilation for ARM and AMD64
-docker run --rm -e BUILD_GOOS="linux" -e BUILD_GOARCH="arm amd64" -v $(pwd):/src centurylink/golang-builder-cross
+## Building
+Example:
+https://travis-ci.org/getcarina/watchtower
+
+Cross compilation for ARM and AMD64 (needs to run in an non-ARM device)
+
+#it will run:
+docker run --rm -e BUILD_GOOS="linux" -e BUILD_GOARCH="arm"  -v $(pwd)/bin:/go/src/github.com/awslabs/amazon-ecr-credential-helper/bin $(docker build -q .)

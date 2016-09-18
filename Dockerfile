@@ -6,6 +6,5 @@ LABEL "com.centurylinklabs.watchtower"="true"
 
 WORKDIR /
 COPY watchtower /
-RUN chmod +x watchtower
 
-ENTRYPOINT ["/watchtower"]
+ENTRYPOINT ["/watchtower cleanup=true debug=true i=5"]
