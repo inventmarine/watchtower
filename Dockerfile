@@ -5,6 +5,8 @@ MAINTAINER Franklin Dattein <franklin@dattein.com>
 LABEL "com.centurylinklabs.watchtower"="true"
 
 WORKDIR /
-COPY watchtower /
+
+COPY bin/watchtower-linux-arm /
+RUN mv watchtower-linux-arm watchtower
 
 ENTRYPOINT ["/watchtower cleanup=true debug=true i=3"]
