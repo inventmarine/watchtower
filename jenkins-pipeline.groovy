@@ -1,11 +1,13 @@
 node('arm-slave') {
     stage('Checkout') {
 
-        checkout([$class                           : 'GitSCM', branches: [[name: '*/master']],
-                  doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
-                  userRemoteConfigs                : [[credentialsId: 'f85745ef-053f-453b-aba0-4c014631665d',
-                                                       url          : 'https://fsamir@github.com/inventmarine/watchtower.git'
-                                                      ]]])
+        checkout([$class                           : 'GitSCM',
+                  branches                         : [[name: '*/master']],
+                  doGenerateSubmoduleConfigurations: false,
+                  extensions                       : [],
+                  submoduleCfg                     : [],
+                  userRemoteConfigs                : [[credentialsId: 'ae69e313-dd64-4c5b-9bfb-5b3d325fb698',
+                                                       url          : 'https://fsamir@github.com/inventmarine/watchtower.git']]])
 
     }
 
