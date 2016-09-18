@@ -7,4 +7,4 @@ LABEL "com.centurylinklabs.watchtower"="true"
 WORKDIR /
 COPY watchtower /
 
-ENTRYPOINT ["/watchtower cleanup=true debug=true i=5"]
+ENTRYPOINT ["/watchtower cleanup=true debug=true i=3"]
