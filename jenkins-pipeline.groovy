@@ -30,7 +30,7 @@ node('arm-slave') {
         }
     }
 
-    stage('Restorea Docker config') {
+    stage('Restore Docker config') {
         sh 'cp ~/.docker/config.json.bkp ~/.docker/config.json || true'
     }
 
