@@ -17,9 +17,7 @@ node('arm-slave') {
         dockerImage = docker.build('inventmarine/watchtower:latest')
     }
 
-    //XXX: `aws ecr get-login` overwrites ~/.docker/config.json
     stage('ECR authenticate') {
-         sh 'cp ~/.docker/config.json ~/.docker/config.json.bkp || true'
          sh 'rm -f ~/.docker/config.json || true'
          sh 'eval $(aws ecr get-login --region us-east-1)'
     }
@@ -29,9 +27,4 @@ node('arm-slave') {
             dockerImage.push('latest')
         }
     }
-
-    stage('Restore Docker config') {
-        sh 'cp ~/.docker/config.json.bkp ~/.docker/config.json || true'
-    }
-
 }
