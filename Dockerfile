@@ -10,4 +10,4 @@ COPY ./bin/watchtower-linux-arm /usr/local/bin/
 RUN mv /usr/local/bin/watchtower-linux-arm /usr/local/bin/watchtower
 RUN chmod +x /usr/local/bin/watchtower
 
-ENTRYPOINT ["/usr/local/bin/watchtower", "cleanup=true", "debug=true", "i=3"]
+ENTRYPOINT ["/usr/local/bin/watchtower --debug cleanup=true -i=3"]
